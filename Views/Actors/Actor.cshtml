@@ -1,0 +1,43 @@
+﻿@model Actor
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="d-flex flex-md-row">
+        <div style="width:20%">
+            <img src="@Model.ImgPath" alt="Img" />
+        </div>
+        <div class="d-flex flex-column">
+            <h4><strong>@Model.Name @Model.LastName</strong></h4>
+            <p>Birth Date: @Model.BirthDate.ToString("dd/MM/yyyy")</p>
+            <p>Rating: @Model.Rating</p>
+            <label>Movies</label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Budget
+                        </th>
+                        <th>
+                            Genre
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Movies.Count > 0)
+                    {
+                        @foreach (var item in Model.Movies)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Budget</td>
+                                @*<td>@item.Genre.Name</td>*@
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

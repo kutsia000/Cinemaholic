@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Actor>
+
+<div class="d-flex">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <a asp-controller="Actors" asp-action="Add">დამატება</a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>გაფილტვრა</h3>            
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <label class="col-form-label">სახელი:</label>
+                            <input class="form-control" id="name" />
+                        </div>
+                        <div class="row">
+                            <label class="">გვარი:</label>
+                            <input class="form-control" id="lastname" />
+                        </div>
+                        <div class="row">
+                            <label class="col-form-label">წლიდან: <span id="spanyearfrom"></span></label>
+                            <input class="form-control" type="range" min="1800" max="2022" value="1800" id="yearfrom" />
+                        </div>
+                        <div class="row">
+                            <label class="col-form-label">წლამდე: <span id="spanyearto"></span></label>
+                            <input class="form-control" type="range" min="1800" max="2022" value="2022" id="yearto" />
+                        </div>
+                        <div class="row">
+                            <label class="col-form-label">რეიტინგი(დან): <span id="spanratingfrom"></span></label>
+                            <input class="form-control" type="range" min="0" max="10" value="0" id="ratingfrom" />
+                        </div>
+                        <div class="row">
+                            <label class="col-form-label">რეიტინგი(მდე): <span id="spanratingto"></span></label>
+                            <input class="form-control" type="range" min="0" max="10" value="10" id="ratingto" />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" id="btnsubmit" class="btn btn-info" style="float:right;">ძებნა</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                <div class="d-flex">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4><strong>@item.Name @item.LastName</strong></h4>
+                                    <a style="float:right" asp-controller="Actors" asp-action="Edit" asp-route-id="@item.Id">ცვლილება</a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex flex-column">
+                                        <div style="width:100%">
+                                            <img src="@item.ImgPath" alt="Img" width="150" height="150" />
+                                        </div>
+                                        <div class="mt-4">
+                                            @item.Rating
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="Actors/Actor/@item.Id" target="_blank">
+                                        <div class="btn btn-primary">ვრცლად</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //todo სერჩპარამეტრებიდან მიანიჭოს ინპუტებს მნიშვნელობები
+    var slider = document.getElementById("yearfrom");
+    var output = document.getElementById("spanyearfrom");
+    output.innerHTML = slider.value;
+
+    document.getElementById("btnsubmit").onclick = function () {
+        alert(1)
+        let name = document.getElementById("name").value;
+        let lastname = document.getElementById("lastname").value;
+        let yearfrom = document.getElementById("yearfrom").value;
+        let yearto = document.getElementById("yearto").value;
+        let ratingfrom = document.getElementById("ratingfrom").value;
+        let ratingto = document.getElementById("ratingto").value;
+
+        window.location.href = `Actors?name=${name}&lastname=${lastname}&yearfrom=${yearfrom}&yearto=${yearto}&ratingfrom=${ratingfrom}$ratingto=${ratingto}`;
+    }
+
+    var slider1 = document.getElementById("yearto");
+    var output1 = document.getElementById("spanyearto");
+    output1.innerHTML = slider1.value;
+
+    var slider2 = document.getElementById("ratingfrom");
+    var output2 = document.getElementById("spanratingfrom");
+    output2.innerHTML = slider2.value;
+
+    var slider3 = document.getElementById("ratingto");
+    var output3 = document.getElementById("spanratingto");
+    output3.innerHTML = slider3.value;
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+    slider1.oninput = function () {
+        output1.innerHTML = this.value;
+    }
+    slider2.oninput = function () {
+        output2.innerHTML = this.value;
+    }
+    slider3.oninput = function () {
+        output3.innerHTML = this.value;
+    }
+
+
+</script>

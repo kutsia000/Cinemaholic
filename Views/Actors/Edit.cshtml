@@ -1,0 +1,76 @@
+﻿@{
+        ViewData["Title"] = "Edit";
+    }
+    @model Actor
+    <form method="post" asp-action="Edit">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-form-label" asp-for="Name"></label>
+                                    <input class="form-control" asp-for="Name" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">გვარი</label>
+                                    <input class="form-control" asp-for="LastName" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">დაბადების თარიღი</label>
+                                    <input class="form-control" asp-for="BirthDate" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">IMDB რეიტინგი</label>
+                                    <input class="form-control" asp-for="Rating" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">სურათის ლინკი</label>
+                                    <input class="form-control" asp-for="ImgPath" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary" style="float:right;">შენახვა</button>
+                            <a asp-controller="Actors" asp-action="Index">
+                                უკან
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                </div>
+            </div>
+        </div>
+    </form>
+
+@*@model Actor
+<form method="post" asp-action="Edit">
+    <div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="BirthDate"></label>
+            <input asp-for="BirthDate" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Rating"></label>
+            <input asp-for="Rating" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImgPath"></label>
+            <input asp-for="ImgPath" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="Actors" asp-action="Index" class="btn btn-secondary" style="width:150px">Back</a>
+    </div>
+</form>*@
