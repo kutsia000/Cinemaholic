@@ -152,3 +152,4 @@ C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Actors\
 C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Accounts\Register.cshtml.g.cs
 C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Accounts\LogIn.cshtml.g.cs
 C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Actors\Edit.cshtml.g.cs
+C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Actors\Delete.cshtml.g.cs

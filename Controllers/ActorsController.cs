@@ -59,5 +59,10 @@ namespace TestMVC.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int? id)
+        {
+            return View();
+        }
     }
 }
