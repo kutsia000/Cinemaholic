@@ -1,11 +1,9 @@
 ﻿
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "Edit";
 }
-
-@*<h1>Add</h1>*@
-@model Actor
-<form method="post" asp-action="Add">
+@model Director
+<form method="post" asp-action="Edit">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-9 col-lg-9">
@@ -36,7 +34,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary" style="float:right;">შენახვა</button>
-                        <a asp-controller="Actors" asp-action="Index">
+                        <a asp-controller="Directors" asp-action="Index">
                             უკან
                         </a>
                     </div>
@@ -45,5 +43,3 @@
         </div>
     </div>
 </form>
-
-
