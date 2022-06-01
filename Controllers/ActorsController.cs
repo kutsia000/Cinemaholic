@@ -19,8 +19,13 @@ namespace TestMVC.Controllers
         //[HttpGet("Actors")]
         public IActionResult Index(string name = "", string lastname = "", int yearfrom = 1, int yearto = 2100, int ratingfrom = 0, int ratingto = 10)
         {
-            IEnumerable<Actor> Actors = db.Actors.Where(c => c.Name.Contains(name) && c.LastName.Contains(lastname)
-            && c.BirthDate.Year >= yearfrom && c.BirthDate.Year <= yearto && c.Rating >= ratingfrom && c.Rating <= ratingto);
+            IEnumerable<Actor> Actors = db.Actors;
+            if (name != null) Actors = Actors.Where(c => c.Name.Contains(name));
+            if (lastname != null) Actors = Actors.Where(c => c.LastName.Contains(lastname));
+            Actors = Actors.Where(c => c.BirthDate.Year >= yearfrom && c.BirthDate.Year <= yearto && c.Rating >= ratingfrom && c.Rating <= ratingto);
+
+            //.Where(c => c.Name.Contains(name) && c.LastName.Contains(lastname)
+            //&& c.BirthDate.Year >= yearfrom && c.BirthDate.Year <= yearto && c.Rating >= ratingfrom && c.Rating <= ratingto);
 
             return View(Actors);
         }
@@ -32,7 +37,7 @@ namespace TestMVC.Controllers
                 return View(db.Actors.Include(c => c.Movies).FirstOrDefault(c => c.Id == id));
             }
         }
-        
+
         public IActionResult Add()
         {
             return View();
