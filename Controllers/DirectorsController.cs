@@ -60,5 +60,16 @@ namespace TestMVC.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int? id)
+        {
+            var director = db.Directors.FirstOrDefault(c => c.Id == id);
+            if (director != null)
+            {
+                db.Directors.Remove(director);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
