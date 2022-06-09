@@ -50,5 +50,16 @@ namespace TestMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int? id)
+        {
+            var movie = db.Movies.FirstOrDefault(c => c.Id == id);
+            if (movie != null)
+            {
+                db.Movies.Remove(movie);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

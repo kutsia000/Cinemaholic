@@ -67,7 +67,13 @@ namespace TestMVC.Controllers
 
         public IActionResult Delete(int? id)
         {
-            return View();
+            var actor = db.Actors.FirstOrDefault(c => c.Id == id);
+            if (actor != null)
+            {
+                db.Actors.Remove(actor);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }
