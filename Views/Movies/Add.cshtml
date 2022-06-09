@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+}
+
+<form method="post" asp-action="Add">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-form-label" name="Name">სახელი</label>
+                                <input class="form-control" name="Name" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">RT რეიტინგი</label>
+                                <input class="form-control" name="RT" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">IMDB რეიტინგი</label>
+                                <input class="form-control" name="IMDB" required />
+                            </div>
+                            @*<div class="form-group">
+                                @Html.LabelFor(model => model.Genre, "Category", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>*@
+                            <!--<div class="form-group">
+                                <label class="col-form-label">ჟანრი</label>-->
+                            <!--<select class="form-control" id="genre" name="Genre">
+                                    @foreach (var item in ViewBag.Genres)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>-->
+                            <div class="form-group">
+                                <label class="col-form-label">ბიუჯეტი</label>
+                                <input class="form-control" name="Budget" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">შემოსავალი</label>
+                                <input class="form-control" name="Income" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">სურათის ლინკი</label>
+                                <input class="form-control" name="ImgPath" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary" style="float:right;">შენახვა</button>
+                        <a asp-controller="Actors" asp-action="Index">
+                            უკან
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

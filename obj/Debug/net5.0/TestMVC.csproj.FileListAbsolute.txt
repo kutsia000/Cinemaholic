@@ -156,3 +156,4 @@ C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Actors\
 C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Directors\Add.cshtml.g.cs
 C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Directors\Edit.cshtml.g.cs
 C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Directors\Director.cshtml.g.cs
+C:\Users\gioku\source\repos\TestMVC\TestMVC\obj\Debug\net5.0\Razor\Views\Movies\Add.cshtml.g.cs

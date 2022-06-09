@@ -1,7 +1,122 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿<div class="d-flex">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <a asp-controller="Movies" asp-action="Add" class="btn btn-outline-info btn-sm">დამატება</a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>გაფილტვრა</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <label class="col-form-label">სახელი:</label>
+                            <input class="form-control" id="name" />
+                        </div>
+                        <div class="row">
+                            <label class="col-form-label">ჟანრი:</label>
+                            <select id="genre" class="form-control" name="Genre">
+                                @foreach (var item in ViewBag.Genres)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label class="col-form-label">RT From: <span id="spanyearfrom"></span></label>
+                            <input class="form-control" type="range" min="0" max="10" value="0" id="rtratingfrom" />
+                        </div>
 
-<h1>Index</h1>
+                        <div class="row">
+                            <label class="col-form-label">RT to: <span id="spanyearto"></span></label>
+                            <input class="form-control" type="range" min="0" max="10" value="10" id="rtratingto" />
+                        </div>
+                        <div class="row">
+                            <label class="col-form-label">IMDB რეიტინგი(დან): <span id="spanratingfrom"></span></label>
+                            <input class="form-control" type="range" min="0" max="10" value="0" id="ratingfrom" />
+                        </div>
+                        <div class="row">
+                            <label class="col-form-label">IMDB რეიტინგი(მდე): <span id="spanratingto"></span></label>
+                            <input class="form-control" type="range" min="0" max="10" value="10" id="ratingto" />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" id="btnsubmit" class="btn btn-info" style="float:right;">ძებნა</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                <div class="d-flex">
+                    @foreach (var item in ViewBag.Movies)
+                    {
 
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <a href="Movies/Movie/@item.Id" target="_blank" style="cursor:pointer">
+                                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                                    <!-- Team Thumb-->
+                                    <div class="advisor_thumb">
+                                        <img src="@item.ImgPath" alt="Img" style="width: 176px; height: 256px; object-fit: cover;" />
+                                        <!-- Social Info-->
+
+                                    </div>
+                                    <!-- Team Details-->
+                                    <div class="single_advisor_details_info">
+                                        <h6>@item.Name</h6>
+                                        <p class="designation">@item.IMDB</p>
+                                        <p class="designation">@item.RT</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //todo სერჩპარამეტრებიდან მიანიჭოს ინპუტებს მნიშვნელობები
+    var slider = document.getElementById("rtratingfrom");
+    var output = document.getElementById("spanyearfrom");
+    output.innerHTML = slider.value;
+
+    document.getElementById("btnsubmit").onclick = function () {
+        //alert(1)
+        let name = document.getElementById("name").value;
+        let yearfrom = document.getElementById("rtratingfrom").value;
+        let yearto = document.getElementById("rtratingto").value;
+        let ratingfrom = document.getElementById("ratingfrom").value;
+        let ratingto = document.getElementById("ratingto").value;
+
+        window.location.href = `Movies?name=${name}&rtratingfrom=${yearfrom}&rtratingto=${yearto}&ratingfrom=${ratingfrom}&ratingto=${ratingto}`;
+    }
+
+    var slider1 = document.getElementById("rtratingto");
+    var output1 = document.getElementById("spanyearto");
+    output1.innerHTML = slider1.value;
+
+    var slider2 = document.getElementById("ratingfrom");
+    var output2 = document.getElementById("spanratingfrom");
+    output2.innerHTML = slider2.value;
+
+    var slider3 = document.getElementById("ratingto");
+    var output3 = document.getElementById("spanratingto");
+    output3.innerHTML = slider3.value;
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+    slider1.oninput = function () {
+        output1.innerHTML = this.value;
+    }
+    slider2.oninput = function () {
+        output2.innerHTML = this.value;
+    }
+    slider3.oninput = function () {
+        output3.innerHTML = this.value;
+    }
+
+
+</script>
