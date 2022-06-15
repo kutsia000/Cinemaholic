@@ -19,5 +19,6 @@ namespace TestMVC.Data
         public DbSet<Director> Directors { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserComment> UserComment { get; set; }
     }
 }

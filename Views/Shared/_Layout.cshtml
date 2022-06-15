@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@using System.Net.Http;
+@*@inject IHttpContextAccessor Accessor*@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,7 +41,18 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index">Movies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="LogIn">Log In</a>
+                            @if (ViewBag.User == null)
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index" id="login">Log In</a>
+                            }
+
+                            else
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Log Out</a>
+                            }
+
+                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut" style="display:none;">Log Out</a>*@
+
                         </li>
                     </ul>
                 </div>
@@ -51,10 +66,10 @@
     </div>
 
     @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - TestMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>*@
+            <div class="container">
+                &copy; 2022 - TestMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

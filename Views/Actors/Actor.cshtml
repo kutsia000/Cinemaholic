@@ -1,15 +1,18 @@
-﻿@model Actor
+﻿
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="d-flex flex-md-row">
         <div class="img-container">
-            <img src="@Model.ImgPath" alt="Img" />
-            <a class="btn btn-outline-warning btn-sm mt-3" asp-controller="Actors" asp-action="Edit" asp-route-id="@Model.Id">ცვლილება</a>
+            <img src="@ViewBag.Actor.ImgPath" alt="Img" />
+            @if (ViewBag.UserRole != null && ViewBag.UserRole == "2")
+            {
+                <a class="btn btn-outline-warning btn-sm mt-3" asp-controller="Actors" asp-action="Edit" asp-route-id="@ViewBag.Actor.Id">ცვლილება</a>
+            }
         </div>
         <div class="d-flex flex-column">
-            <h4><strong>@Model.Name @Model.LastName</strong></h4>
-            <p>Birth Date: @Model.BirthDate.ToString("dd/MM/yyyy")</p>
-            <p>Rating: @Model.Rating</p>
+            <h4><strong>@ViewBag.Actor.Name @ViewBag.Actor.LastName</strong></h4>
+            <p>Birth Date: @ViewBag.Actor.BirthDate.ToString("dd/MM/yyyy")</p>
+            <p>Rating: @ViewBag.Actor.Rating</p>
             <label>Movies</label>
             <table>
                 <thead>
@@ -26,9 +29,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (Model.Movies.Count > 0)
+                    @if (ViewBag.Actor.Movies.Count > 0)
                     {
-                        @foreach (var item in Model.Movies)
+                        @foreach (var item in ViewBag.Actor.Movies)
                         {
                             <tr>
                                 <td>@item.Name</td>
