@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+@model User
+<form method="post">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h3>Register Form</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-form-label" asp-for="Name"></label>
+                        <input class="form-control" name="Name" asp-for="Name" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" asp-for="LastName"></label>
+                        <input class="form-control" name="LastName" asp-for="LastName" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" asp-for="UserName"></label>
+                        <input class="form-control" name="UserName" asp-for="UserName" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" asp-for="Password"></label>
+                        <input class="form-control" name="Password" asp-for="Password" type="password" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" asp-for="Email"></label>
+                        <input class="form-control" name="Email" asp-for="Email" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" asp-for="BirthDate"></label>
+                        <input class="form-control" name="BirthDate" asp-for="BirthDate" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" asp-for="UserType"></label>
+                        <input class="form-control" name="UserType" asp-for="UserType" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" asp-for="ImageUrl"></label>
+                        <input class="form-control" name="ImageUrl" asp-for="ImageUrl" />
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-outline-info" asp-controller="Auth" asp-action="Index">უკან</a>
+                <button type="submit" class="btn btn-outline-primary" style="float:right">შენახვა</button>
+            </div>
+        </div>
+    </div>
+</form>
+

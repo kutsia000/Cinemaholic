@@ -26,5 +26,7 @@ namespace TestMVC.Models
         [Required]
         [Column(Order = 2)]
         public string Email { get; set; }
+        [Required]
+        public string UserType { get; set; }
     }
 }

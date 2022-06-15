@@ -1,4 +1,13 @@
-﻿<div class="d-flex">
+﻿@*@if (ViewBag.User != null)
+{
+    <script>
+        let login = document.getElementById("login");
+        login.innerHTML = "Log Out";
+        login.href = "Auth/LogOut";
+    </script>
+}*@
+
+<div class="d-flex">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">

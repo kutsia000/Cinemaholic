@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TestMVC.Data;
 using TestMVC.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace TestMVC.Controllers
 {
@@ -23,24 +24,28 @@ namespace TestMVC.Controllers
             if (name != null) Actors = Actors.Where(c => c.Name.Contains(name));
             if (lastname != null) Actors = Actors.Where(c => c.LastName.Contains(lastname));
             Actors = Actors.Where(c => c.BirthDate.Year >= yearfrom && c.BirthDate.Year <= yearto && c.Rating >= ratingfrom && c.Rating <= ratingto);
-
+            ViewBag.User = HttpContext.Session.GetInt32("userid");
+            ViewBag.Actors = Actors;
             //.Where(c => c.Name.Contains(name) && c.LastName.Contains(lastname)
             //&& c.BirthDate.Year >= yearfrom && c.BirthDate.Year <= yearto && c.Rating >= ratingfrom && c.Rating <= ratingto);
 
-            return View(Actors);
+            return View(ViewBag);
         }
 
         public IActionResult Actor(int id)
         {
             using (db)
             {
-                return View(db.Actors.Include(c => c.Movies).FirstOrDefault(c => c.Id == id));
+                ViewBag.UserRole = HttpContext.Session.GetString("UserRole");
+                ViewBag.Actor = db.Actors.Include(c => c.Movies).FirstOrDefault(c => c.Id == id);
+                return View(ViewBag);
             }
         }
 
         public IActionResult Add()
         {
-            return View();
+            ViewBag.User = HttpContext.Session.GetInt32("userid");
+            return View(ViewBag);
         }
         [HttpPost]
         public IActionResult Add(Actor actor)
@@ -55,7 +60,9 @@ namespace TestMVC.Controllers
             if (id == null || id == 0) return NotFound();
             Actor actor = db.Actors.Find(id);
             if (actor == null) return NotFound();
-            return View(actor);
+            ViewBag.User = HttpContext.Session.GetInt32("userid");
+            ViewBag.Actor = actor;
+            return View(ViewBag);
         }
         [HttpPost]
         public IActionResult Edit(Actor actor)

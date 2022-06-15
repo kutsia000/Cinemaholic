@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace TestMVC.Controllers
 
             IEnumerable<Genre> gr = genres;
             ViewBag.Genres = gr;
+            ViewBag.User = HttpContext.Session.GetInt32("userid");
 
             if (name != null) movies = movies.Where(c => c.Name.Contains(name));
             if (genre != null && genre > 0) movies = movies.Where(c => c.Genre.Id == genre);
